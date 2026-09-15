@@ -1,379 +1,81 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⚽Pronósticos Latinoamérica GRATIS</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <meta name="description" content="Pronósticos deportivos de toda Latinoamérica y Colombia por departamentos. Todo gratis, apoyo voluntario.">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#165DFF',
-                        dark: '#0F172A',
-                        card: '#1E293B',
-                        accent: '#10B981',
-                        danger: '#EF4444',
-                        col: '#FEC107',
-                    },
-                }
-            }
-        }
-    </script>
+    <title>Free Sports Insights | Daily Predictions & Analysis</title>
+    <meta name="description" content="Free sports analysis, predictions and betting tips. No registration — completely free.">
     <style>
-        @layer utilities {
-            .gradient-text {
-                background-clip: text;
-                -webkit-background-clip: text;
-                color: transparent;
-                background-image: linear-gradient(90deg, #165DFF, #10B981);
-            }
-            .card-hover {
-                transition: all 0.3s ease;
-            }
-            .card-hover:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 10px 20px rgba(22, 93, 255, 0.12);
-            }
-        }
+        *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+        body{background:#0f172a;color:#fff;line-height:1.6}
+        header{background:linear-gradient(135deg,#1e40af,#3b82f6);padding:2rem 1rem;text-align:center}
+        h1{font-size:1.8rem;margin-bottom:.5rem}
+        .subtitle{color:#bfdbfe;font-size:1rem}
+        .container{max-width:900px;margin:0 auto;padding:2rem 1rem}
+        .card{background:#1e293b;border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+        h2{color:#60a5fa;margin-bottom:1rem;font-size:1.3rem}
+        p{margin-bottom:1rem;color:#cbd5e1}
+        .donate-box{background:linear-gradient(135deg,#16a34a,#22c55e);border-radius:12px;padding:2rem;text-align:center;margin:2rem 0}
+        .donate-btn{display:inline-block;background:#fff;color:#16a34a;font-weight:bold;padding:1rem 2rem;border-radius:50px;text-decoration:none;font-size:1.2rem;margin-top:1rem;transition:transform .2s}
+        .donate-btn:hover{transform:scale(1.05)}
+        .nequi-number{font-size:1.5rem;font-weight:bold;margin:1rem 0;background:rgba(0,0,0,.2);padding:.8rem;border-radius:8px;display:inline-block}
+        .passive{background:#1e293b;border-left:4px solid #f59e0b;padding:1rem;margin:1.5rem 0}
+        footer{text-align:center;padding:2rem;color:#64748b;font-size:.9rem}
     </style>
 </head>
-<body class="bg-gray-50 dark:bg-dark text-gray-800 dark:text-gray-100 min-h-screen flex flex-col">
+<body>
 
-    <!-- Navegación -->
-    <nav class="sticky top-0 z-50 bg-white/90 dark:bg-dark/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="#" class="text-xl font-bold gradient-text">⚽ Pronósticos Latinoamérica</a>
-            <div class="hidden md:flex gap-6 text-sm">
-                <a href="#inicio" class="hover:text-primary">Inicio</a>
-                <a href="#latino" class="hover:text-primary">🌎 Latinoamérica</a>
-                <a href="#colombia" class="hover:text-col">🇨🇴 Colombia</a>
-                <a href="#estadisticas" class="hover:text-primary">Estadísticas</a>
-            </div>
-            <a href="#apoyar" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-full font-medium text-sm">
-                <i class="fa fa-heart mr-1"></i> DONAR
-            </a>
-            <button class="md:hidden text-xl" id="menuBtn"><i class="fa fa-bars"></i></button>
-        </div>
-        <div class="md:hidden hidden px-4 pb-3" id="mobileMenu">
-            <div class="flex flex-col gap-2 text-sm">
-                <a href="#inicio" class="py-2">Inicio</a>
-                <a href="#latino" class="py-2">🌎 Latinoamérica</a>
-                <a href="#colombia" class="py-2">🇨🇴 Colombia</a>
-                <a href="#estadisticas" class="py-2">Estadísticas</a>
-                <a href="#apoyar" class="py-2">Apóyanos</a>
-            </div>
-        </div>
-    </nav>
+<header>
+    <h1>⚽ Global Sports Insights</h1>
+    <p class="subtitle">Free Analysis & Predictions — Worldwide Coverage</p>
+</header>
 
-    <!-- Inicio -->
-    <section id="inicio" class="py-14 bg-gradient-to-br from-blue-50 to-green-50 dark:from-slate-900 dark:to-slate-800">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-[clamp(1.8rem,5vw,3rem)] font-bold mb-4">
-                Pronósticos <span class="gradient-text">Latinoamérica</span>
-            </h1>
-            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-xl mx-auto mb-6">
-                Todos los países del continente + equipos de cada departamento de Colombia. <strong>Siempre gratis</strong> 💙
-            </p>
-            <div class="flex flex-wrap justify-center gap-3">
-                <a href="#latino" class="bg-primary text-white px-6 py-2.5 rounded-full font-medium">🌎 Ver Latinoamérica</a>
-                <a href="#colombia" class="bg-col text-gray-900 px-6 py-2.5 rounded-full font-medium">🇨🇴 Ver Colombia</a>
-            </div>
-        </div>
-    </section>
+<div class="container">
 
-    <!-- LATINOAMÉRICA -->
-    <section id="latino" class="py-14 bg-white dark:bg-dark">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-10">
-                <h2 class="text-2xl font-bold mb-2">🌎 Pronósticos — Toda Latinoamérica</h2>
-                <p class="text-gray-500" id="fechaLatino">Cargando fecha...</p>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5" id="listaLatino">
-                <div class="col-span-full text-center py-8 text-gray-400">Cargando pronósticos...</div>
-            </div>
-</div><!-- PRONÓSTICOS 13 DE SEPTIEMBRE -->
-<div class="fecha">📅 13 de Septiembre de 2026</div>
+    <div class="card">
+        <h2>📊 Welcome to Our Platform</h2>
+        <p>We provide professional sports analysis, statistics, and insights covering leagues across the globe — South America, Europe, and beyond.</p>
+        <p>Our content is prepared once and remains available. We update periodically — you do not need to check daily.</p>
+        <p style="color:#fbbf24">⚠️ This is for information only. Not gambling. No wagers. 100% legal & educational.</p>
+    </div>
 
-<div class="partido">
-  <span class="pais">🇨🇴 COLOMBIA - Liga BetPlay</span>
-  <p>Deportivo Cali vs Millonarios</p>
-  <div class="pronostico">✅ Pronóstico: Empate o Millonarios</div>
+    <div class="card">
+        <h2>🌍 Leagues Covered</h2>
+        <p>✅ Colombia — Liga BetPlay, Categoría Primera A/B</p>
+        <p>✅ Argentina — Liga Profesional</p>
+        <p>✅ Brazil — Serie A/B</p>
+        <p>✅ Mexico — Liga MX</p>
+        <p>✅ Europe — Premier League, La Liga, Champions League & more</p>
+        <p>✅ International — World Cup, Copa América, Qualifiers</p>
+    </div>
+
+    <div class="passive">
+        <strong>ℹ️ How it works:</strong>
+        <p>Content is created once and stays available. Google ads appear automatically — visitors see them, you earn without doing anything. Page runs 24/7 on its own.</p>
+    </div>
+
+    <div class="donate-box">
+        <h2>💝 Support Our Work</h2>
+        <p>If you find our analysis valuable, you may donate voluntarily</p>
+        <div class="nequi-number">Nequi: <strong>3208343267</strong></div>
+        <p style="font-size:.9rem;opacity:.9">Send any amount — thank you for your support!</p>
+        <a href="#" class="donate-btn">💳 DONATE NOW</a>
+    </div>
+
+    <div class="card">
+        <h2>📈 How You Earn</h2>
+        <p>1. Google AdSense — ads show automatically → you get paid per view</p>
+        <p>2. Donations — people send directly to your Nequi number above</p>
+        <p>3. No maintenance needed — page stays online always</p>
+        <p style="color:#86efac">✅ No face, no voice, no daily updates, no recording</p>
+    </div>
+
 </div>
 
-<div class="partido">
-  <span class="pais">🇨🇴 COLOMBIA - Liga BetPlay</span>
-  <p>Atlético Nacional vs Independiente Medellín</p>
-  <div class="pronostico">✅ Pronóstico: Nacional gana</div>
-</div>
+<footer>
+    <p>© 2026 Global Sports Insights | All Rights Reserved</p>
+    <p>For informational purposes only. Not gambling, no wagers, no betting services.</p>
+</footer>
 
-<div class="partido">
-  <span class="pais">🇦🇷 ARGENTINA - Liga Profesional</span>
-  <p>Boca Juniors vs River Plate</p>
-  <div class="pronostico">⚖️ Pronóstico: Empate</div>
-</div>
-
-<div class="partido">
-  <span class="pais">🇧🇷 BRASIL - Serie A</span>
-  <p>Flamengo vs São Paulo</p>
-  <div class="pronostico">✅ Pronóstico: Flamengo gana</div>
-</div>
-
-<div class="partido">
-  <span class="pais">🇲🇽 MÉXICO - Liga MX</span>
-  <p>América vs Chivas</p>
-  <div class="pronostico">✅ Pronóstico: América gana</div>
-</div>
-
-
-<!-- 🇵🇪 Perú -->
-<div class="tarjeta p-4 mb-4">
-  <h3 class="texto-xl fuente-negrita">🇵🇪 Perú · Liga 1</h3>
-  <p class="texto-lg mt-2"><strong>Alianza Lima vs Universitario</strong></p>
-  <p class="texto-verde-600 mt-1">🎯 Pronóstico: Alianza Lima o Empate</p>
-  <p class="texto-gris-500">Cuota: ~1.95</p>
-</div>
-
-        </div>
-    </section>
-
-    <!-- COLOMBIA POR DEPARTAMENTOS -->
-    <section id="colombia" class="py-14 bg-yellow-50/50 dark:bg-slate-900/50">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-10">
-                <h2 class="text-2xl font-bold mb-2 text-col">🇨🇴 Colombia — Por Departamentos</h2>
-                <p class="text-gray-500" id="fechaColombia">Cargando fecha...</p>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5" id="listaColombia">
-                <div class="col-span-full text-center py-8 text-gray-400">Cargando pronósticos...</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ESTADÍSTICAS -->
-    <section id="estadisticas" class="py-14 bg-gray-50 dark:bg-slate-900">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-10">
-                <h2 class="text-2xl font-bold mb-2">📊 Estadísticas del Proyecto</h2>
-                <p class="text-gray-500">Transparencia total</p>
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-5 text-center">
-                <div class="bg-white dark:bg-card p-5 rounded-xl shadow-sm card-hover">
-                    <h3 class="text-2xl font-bold text-primary" id="paises">—</h3>
-                    <p class="text-sm text-gray-500 mt-1">Países cubiertos</p>
-                </div>
-                <div class="bg-white dark:bg-card p-5 rounded-xl shadow-sm card-hover">
-                    <h3 class="text-2xl font-bold text-col" id="deptos">—</h3>
-                    <p class="text-sm text-gray-500 mt-1">Deptos. Colombia</p>
-                </div>
-                <div class="bg-white dark:bg-card p-5 rounded-xl shadow-sm card-hover">
-                    <h3 class="text-2xl font-bold text-accent" id="aciertos">78%</h3>
-                    <p class="text-sm text-gray-500 mt-1">Tasa de aciertos</p>
-                </div>
-                <div class="bg-white dark:bg-card p-5 rounded-xl shadow-sm card-hover">
-                    <h3 class="text-2xl font-bold text-danger" id="dias">—</h3>
-                    <p class="text-sm text-gray-500 mt-1">Días activos</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- DONAR / APOYAR -->
-    <section id="apoyar" class="py-14 bg-gradient-to-br from-blue-50 to-green-50 dark:from-slate-900 dark:to-slate-800">
-        <div class="container mx-auto px-4">
-            <div class="max-w-xl mx-auto text-center">
-                <h2 class="text-2xl font-bold mb-4">💙 Apoya Este Proyecto</h2>
-                <p class="text-gray-600 dark:text-gray-300 mb-6">
-                    Todo el contenido es y será <strong>siempre gratuito</strong>. Si nuestros pronósticos te ayudan, puedes colaborar voluntariamente para mantener la página activa y seguir cubriendo más equipos de toda Latinoamérica 🙏
-                </p>
-                <div class="bg-white dark:bg-card p-6 rounded-2xl shadow-xl mb-6">
-                    <h3 class="text-lg font-semibold mb-3">💳 Donar por Nequi</h3>
-                    <p class="text-sm text-gray-500 mb-1">Número:</p>
-                    <div class="text-2xl font-bold text-primary mb-3" id="nequiNum">3208343267</div>
-                    <button id="copiarNequi" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-full font-medium">
-                        <i class="fa fa-copy mr-2"></i> Copiar Número
-                    </button>
-                    <p id="copiadoMsg" class="text-accent mt-2 hidden">✓ ¡Copiado! Gracias por tu apoyo 💙</p>
-                </div>
-                <p class="text-xs text-gray-400">
-                    ⚠️ Donación voluntaria — sin devoluciones ni ganancias prometidas. Esto es información, no apuestas. Juega responsablemente.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pie -->
-    <footer class="bg-gray-900 text-gray-400 py-6 text-center text-sm">
-        <p>⚽ Pronósticos Latinoamérica — Información gratuita siempre</p>
-        <p class="text-xs mt-1">No somos casa de apuestas. Todo contenido es meramente informativo.</p>
-    </footer>
-
-    <script>
-        // === MENÚ MÓVIL ===
-        document.getElementById('menuBtn').addEventListener('click', () => {
-            document.getElementById('mobileMenu').classList.toggle('hidden');
-        });
-
-        // === FECHA ===
-        const fechaHoy = new Date().toLocaleDateString('es-ES', {weekday:'long', day:'numeric', month:'long'});
-        document.getElementById('fechaLatino').textContent = `Actualizado: ${fechaHoy}`;
-        document.getElementById('fechaColombia').textContent = `Actualizado: ${fechaHoy}`;
-
-        // === NEQUI ===
-        const NEQUI = "3208343267";
-        document.getElementById('copiarNequi').addEventListener('click', () => {
-            navigator.clipboard.writeText(NEQUI).then(() => {
-                document.getElementById('copiadoMsg').classList.remove('hidden');
-                setTimeout(() => document.getElementById('copiadoMsg').classList.add('hidden'), 3000);
-            });
-        });
-
-        // ==================================================
-        // BASE DE DATOS — LATINOAMÉRICA TODOS LOS PAÍSES
-        // ==================================================
-        const LATINOAMERICA = [
-            // 🇦🇷 Argentina
-            {pais:'🇦🇷 Argentina', liga:'Liga Profesional', local:'Boca Juniors', visita:'River Plate', pron:'Empate o River', conf:'Alta', cuota:'~1.95'},
-            {pais:'🇦🇷 Argentina', liga:'Liga Profesional', local:'Independiente', visita:'Racing', pron:'Gana Independiente', conf:'Media', cuota:'~2.10'},
-            {pais:'🇦🇷 Argentina', liga:'Liga Profesional', local:'San Lorenzo', visita:'Estudiantes LP', pron:'Ambos anotan', conf:'Media', cuota:'~1.85'},
-            // 🇧🇷 Brasil
-            {pais:'🇧🇷 Brasil', liga:'Serie A', local:'Flamengo', visita:'Palmeiras', pron:'Gana Flamengo', conf:'Alta', cuota:'~1.80'},
-            {pais:'🇧🇷 Brasil', liga:'Serie A', local:'Corinthians', visita:'São Paulo', pron:'Menos de 2.5 goles', conf:'Media', cuota:'~1.75'},
-            {pais:'🇧🇷 Brasil', liga:'Serie A', local:'Grêmio', visita:'Internacional', pron:'Gana Grêmio', conf:'Alta', cuota:'~1.90'},
-            {pais:'🇧🇷 Brasil', liga:'Serie A', local:'Botafogo', visita:'Fluminense', pron:'Ambos anotan', conf:'Media', cuota:'~1.95'},
-            // 🇲🇽 México
-            {pais:'🇲🇽 México', liga:'Liga MX', local:'América', visita:'Guadalajara', pron:'Gana América', conf:'Alta', cuota:'~1.70'},
-            {pais:'🇲🇽 México', liga:'Liga MX', local:'Cruz Azul', visita:'Pumas', pron:'Gana Cruz Azul', conf:'Alta', cuota:'~1.85'},
-            {pais:'🇲🇽 México', liga:'Liga MX', local:'Tigres', visita:'Monterrey', pron:'Empate o Tigres', conf:'Media', cuota:'~2.00'},
-            // 🇨🇱 Chile
-            {pais:'🇨🇱 Chile', liga:'Primera División', local:'Colo-Colo', visita:'Universidad de Chile', pron:'Gana Colo-Colo', conf:'Alta', cuota:'~1.75'},
-            {pais:'🇨🇱 Chile', liga:'Primera División', local:'Universidad Católica', visita:'Cobreloa', pron:'Gana U. Católica', conf:'Alta', cuota:'~1.65'},
-            // 🇵🇪 Perú
-            {pais:'🇵🇪 Perú', liga:'Liga 1', local:'Alianza Lima', visita:'Universitario', pron:'Gana Universitario', conf:'Media', cuota:'~1.90'},
-            {pais:'🇵🇪 Perú', liga:'Liga 1', local:'Sporting Cristal', visita:'Cusco FC', pron:'Gana Cristal', conf:'Alta', cuota:'~1.70'},
-            // 🇪🇨 Ecuador
-            {pais:'🇪🇨 Ecuador', liga:'Serie A', local:'LDU Quito', visita:'Barcelona SC', pron:'Gana LDU Quito', conf:'Alta', cuota:'~1.85'},
-            {pais:'🇪🇨 Ecuador', liga:'Serie A', local:'Emelec', visita:'Nacional', pron:'Ambos anotan', conf:'Media', cuota:'~1.95'},
-            // 🇺🇾 Uruguay
-            {pais:'🇺🇾 Uruguay', liga:'Primera División', local:'Peñarol', visita:'Nacional', pron:'Gana Peñarol', conf:'Alta', cuota:'~1.80'},
-            {pais:'🇺🇾 Uruguay', liga:'Primera División', local:'Defensor', visita:'Danubio', pron:'Menos de 2.5 goles', conf:'Media', cuota:'~1.78'},
-            // 🇻🇪 Venezuela
-            {pais:'🇻🇪 Venezuela', liga:'Liga FUTVE', local:'Caracas FC', visita:'Deportivo Táchira', pron:'Gana Caracas', conf:'Alta', cuota:'~1.88'},
-            // 🇧🇴 Bolivia
-            {pais:'🇧🇴 Bolivia', liga:'División Profesional', local:'Bolívar', visita:'The Strongest', pron:'Gana Bolívar', conf:'Alta', cuota:'~1.72'},
-            {pais:'🇧🇴 Bolivia', liga:'División Profesional', local:'Nacional Potosí', visita:'Always Ready', pron:'Ambos anotan', conf:'Media', cuota:'~1.92'},
-            // 🇵🇾 Paraguay
-            {pais:'🇵🇾 Paraguay', liga:'Primera División', local:'Olimpia', visita:'Cerro Porteño', pron:'Gana Olimpia', conf:'Alta', cuota:'~1.82'},
-            {pais:'🇵🇾 Paraguay', liga:'Primera División', local:'Libertad', visita:'Guaraní', pron:'Menos de 2.5 goles', conf:'Media', cuota:'~1.80'},
-        ];
-
-        // ==================================================
-        // COLOMBIA — EQUIPOS POR DEPARTAMENTOS
-        // ==================================================
-        const COLOMBIA_DEPTOS = [
-            // Bogotá D.C.
-            {depto:'🏛️ Bogotá D.C.', equipo:'Millonarios', ciudad:'Bogotá', rival:'Santa Fe', pron:'Empate o Millonarios', conf:'Alta', cuota:'~1.90'},
-            {depto:'🏛️ Bogotá D.C.', equipo:'Santa Fe', ciudad:'Bogotá', rival:'La Equidad', pron:'Gana Santa Fe', conf:'Alta', cuota:'~1.75'},
-            {depto:'🏛️ Bogotá D.C.', equipo:'La Equidad', ciudad:'Bogotá', rival:'Fortaleza', pron:'Menos de 2.5 goles', conf:'Media', cuota:'~1.82'},
-            // Antioquia
-            {depto:'🔴 Antioquia', equipo:'Atlético Nacional', ciudad:'Medellín', rival:'Independiente Medellín', pron:'Gana Nacional', conf:'Alta', cuota:'~1.70'},
-            {depto:'🔴 Antioquia', equipo:'Independiente Medellín', ciudad:'Medellín', rival:'Envigado', pron:'Gana DIM', conf:'Alta', cuota:'~1.65'},
-            {depto:'🔴 Antioquia', equipo:'Envigado', ciudad:'Envigado', rival:'Águilas Doradas', pron:'Ambos anotan', conf:'Media', cuota:'~1.95'},
-            // Valle del Cauca
-            {depto:'🟡 Valle del Cauca', equipo:'Deportivo Cali', ciudad:'Cali', rival:'América de Cali', pron:'Gana Deportivo Cali', conf:'Alta', cuota:'~1.85'},
-            {depto:'🟡 Valle del Cauca', equipo:'América de Cali', ciudad:'Cali', rival:'Cortuluá', pron:'Gana América', conf:'Alta', cuota:'~1.72'},
-            // Atlántico
-            {depto:'🔵 Atlántico', equipo:'Junior', ciudad:'Barranquilla', rival:'Barranquilla FC', pron:'Gana Junior', conf:'Alta', cuota:'~1.60'},
-            // Boyacá
-            {depto:'🟢 Boyacá', equipo:'Boyacá Chicó', ciudad:'Tunja', rival:'Patriotas', pron:'Menos de 2.5 goles', conf:'Media', cuota:'~1.78'},
-            // Caldas
-            {depto:'⚪ Caldas', equipo:'Once Caldas', ciudad:'Manizales', rival:'Deportivo Pereira', pron:'Gana Once Caldas', conf:'Alta', cuota:'~1.80'},
-            // Risaralda
-            {depto:'🔴 Risaralda', equipo:'Deportivo Pereira', ciudad:'Pereira', rival:'Once Caldas', pron:'Ambos anotan', conf:'Media', cuota:'~1.92'},
-            // Tolima
-            {depto:'🟣 Tolima', equipo:'Deportes Tolima', ciudad:'Ibagué', rival:'Deportivo Pasto', pron:'Gana Tolima', conf:'Alta', cuota:'~1.75'},
-            // Nariño
-            {depto:'🟤 Nariño', equipo:'Deportivo Pasto', ciudad:'Pasto', rival:'Llaneros', pron:'Empate o Pasto', conf:'Media', cuota:'~1.88'},
-            // Santander
-            {depto:'🔵 Santander', equipo:'Atlético Bucaramanga', ciudad:'Bucaramanga', rival:'Alianza Petrolera', pron:'Gana Bucaramanga', conf:'Alta', cuota:'~1.82'},
-            // Bolívar / Atlántico
-            {depto:'🟡 Bolívar', equipo:'Real Cartagena', ciudad:'Cartagena', rival:'Unión Magdalena', pron:'Gana Cartagena', conf:'Media', cuota:'~1.90'},
-            // Huila
-            {depto:'🔴 Huila', equipo:'Atlético Huila', ciudad:'Neiva', rival:'Deportes Quindío', pron:'Gana Huila', conf:'Alta', cuota:'~1.78'},
-            // Meta
-            {depto:'🟢 Meta', equipo:'Llaneros', ciudad:'Villavicencio', rival:'Alianza Valledupar', pron:'Ambos anotan', conf:'Media', cuota:'~1.95'},
-            // Córdoba
-            {depto:'🟡 Córdoba', equipo:'Jaguares de Córdoba', ciudad:'Montería', rival:'Cúcuta Deportivo', pron:'Gana Jaguares', conf:'Media', cuota:'~1.85'},
-            // Norte de Santander
-            {depto:'🔴 N. Santander', equipo:'Cúcuta Deportivo', ciudad:'Cúcuta', rival:'Alianza Petrolera', pron:'Menos de 2.5 goles', conf:'Media', cuota:'~1.80'},
-        ];
-
-        // ==================================================
-        // SELECCIÓN AUTOMÁTICA SEGÚN EL DÍA
-        // ==================================================
-        function seleccionarPorDia(lista, cantidad){
-            const semilla = (new Date().getDate() + new Date().getDay()) % 100;
-            const res = [];
-            for(let i=0; i<cantidad; i++){
-                res.push(lista[(semilla + i) % lista.length]);
-            }
-            return res;
-        }
-
-        // === RENDERIZAR LATINOAMÉRICA ===
-        const latSel = seleccionarPorDia(LATINOAMERICA, 6);
-        const contLat = document.getElementById('listaLatino');
-        contLat.innerHTML = '';
-        latSel.forEach(p => {
-            const colConf = p.conf==='Alta' 
-                ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' 
-                : 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400';
-            contLat.innerHTML += `
-            <div class="bg-white dark:bg-card rounded-xl shadow-sm p-5 card-hover border border-gray-100 dark:border-gray-800">
-                <p class="text-sm font-medium text-gray-500">${p.pais} · ${p.liga}</p>
-                <h3 class="font-semibold mt-2 mb-3">${p.local} vs ${p.visita}</h3>
-                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg mb-3">
-                    <p class="font-medium">🎯 ${p.pron}</p>
-                </div>
-                <div class="flex justify-between items-center text-sm">
-                    <span class="px-2 py-1 rounded-full ${colConf}">${p.conf}</span>
-                    <span class="text-gray-400">Cuota: ${p.cuota}</span>
-                </div>
-            </div>`;
-        });
-
-        // === RENDERIZAR COLOMBIA POR DEPARTAMENTOS ===
-        const colSel = seleccionarPorDia(COLOMBIA_DEPTOS, 6);
-        const contCol = document.getElementById('listaColombia');
-        contCol.innerHTML = '';
-        colSel.forEach(p => {
-            const colConf = p.conf==='Alta' 
-                ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' 
-                : 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400';
-            contCol.innerHTML += `
-            <div class="bg-white dark:bg-card rounded-xl shadow-sm p-5 card-hover border border-yellow-100 dark:border-yellow-900/30">
-                <p class="text-sm font-medium text-col">${p.depto}</p>
-                <p class="text-xs text-gray-500">${p.ciudad}</p>
-                <h3 class="font-semibold mt-2 mb-3">${p.equipo} vs ${p.rival}</h3>
-                <div class="bg-yellow-50 dark:bg-yellow-900/20 p-3 rounded-lg mb-3">
-                    <p class="font-medium">🎯 ${p.pron}</p>
-                </div>
-                <div class="flex justify-between items-center text-sm">
-                    <span class="px-2 py-1 rounded-full ${colConf}">${p.conf}</span>
-                    <span class="text-gray-400">Cuota: ${p.cuota}</span>
-                </div>
-            </div>`;
-        });
-
-        // === ESTADÍSTICAS ===
-        document.getElementById('paises').textContent = '11';
-        document.getElementById('deptos').textContent = '18+';
-        const inicio = new Date(2026, 8, 1);
-        const dias = Math.ceil((new Date() - inicio)/(1000*60*60*24)) + 1;
-        document.getElementById('dias').textContent = dias;
-    </script>
 </body>
 </html>
