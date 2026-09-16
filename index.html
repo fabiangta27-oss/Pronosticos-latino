@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learn English Everyday</title>
-    <meta name="description" content="New phrase daily — English first, translation below">
+    <meta name="description" content="5 new phrases daily — English first, translation below">
     <style>
         *{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,sans-serif}
         body{background:#0f172a;color:#fff;line-height:1.6}
@@ -15,9 +15,9 @@
         .card{background:#1e293b;border-radius:12px;padding:1.5rem;margin-bottom:1.5rem}
         h2{color:#a78bfa;margin-bottom:1rem;font-size:1.3rem}
         .day-badge{display:inline-block;background:#22c55e;color:#fff;padding:.3rem 1rem;border-radius:20px;font-size:.9rem;margin-bottom:1rem}
-        .phrase{background:#334155;padding:1.5rem;border-radius:10px;margin:1rem 0;border-left:4px solid #a78bfa}
-        .en{font-size:1.2rem;font-weight:bold;color:#86efac;margin-bottom:.8rem}
-        .es{color:#fcd34d;font-style:italic;font-size:1.05rem}
+        .phrase{background:#334155;padding:1.2rem;border-radius:10px;margin:1rem 0;border-left:4px solid #a78bfa}
+        .en{font-size:1.1rem;font-weight:bold;color:#86efac;margin-bottom:.5rem}
+        .es{color:#fcd34d;font-style:italic}
         .donate-box{background:linear-gradient(135deg,#16a34a,#22c55e);border-radius:12px;padding:2rem;text-align:center;margin:2rem 0}
         .nequi-number{font-size:1.5rem;font-weight:bold;margin:1rem 0;background:rgba(0,0,0,.2);padding:.8rem;border-radius:8px;display:inline-block}
         footer{text-align:center;padding:2rem;color:#64748b;font-size:.9rem}
@@ -27,28 +27,25 @@
 
 <header>
     <h1>🌍 Learn English Everyday</h1>
-    <p class="subtitle">New phrase automatically each day</p>
+    <p class="subtitle">5 new phrases daily — come back tomorrow!</p>
 </header>
 
 <div class="container">
 
     <div class="card">
-        <h2>📚 Today's Phrase</h2>
+        <h2>📚 Today's Phrases</h2>
         <div class="day-badge" id="dayBadge">Day 1</div>
-        <div class="phrase" id="phraseContainer">
-            <div class="en" translate="no">Hello! How are you today?</div>
-            <div class="es">→ ¡Hola! ¿Cómo estás hoy?</div>
-        </div>
-        <p style="color:#94a3b8;margin-top:1rem">Come back tomorrow for a new one!</p>
+        <div id="phrasesList"></div>
+        <p style="color:#94a3b8;margin-top:1rem">🔄 Come back tomorrow for 5 new phrases!</p>
     </div>
 
     <div class="card">
         <h2>✨ How It Works</h2>
-        <p>✅ One new phrase appears automatically every day</p>
+        <p>✅ 5 fresh phrases automatically every day</p>
         <p>✅ English stays in English — never translates</p>
         <p>✅ Translation below in your language</p>
-        <p>✅ Works 24/7 — no updates needed from you</p>
-        <p>✅ No face, no video, no voice recordings</p>
+        <p>✅ 30 days of content — works 24/7 alone</p>
+        <p>✅ No face, no video, no voice needed</p>
     </div>
 
     <div class="donate-box">
@@ -66,48 +63,62 @@
 
 <script>
 const phrases = [
- {en:"Hello! How are you today?", es:"¡Hola! ¿Cómo estás hoy?"},
- {en:"I want to speak English fluently.", es:"Quiero hablar inglés con fluidez."},
- {en:"Can you help me, please?", es:"¿Me puedes ayudar, por favor?"},
- {en:"I understand everything perfectly.", es:"Entiendo todo perfectamente."},
- {en:"Thank you very much for your support.", es:"Muchas gracias por tu apoyo."},
- {en:"I am learning something new every day.", es:"Estoy aprendiendo algo nuevo cada día."},
- {en:"Practice makes perfect.", es:"La práctica hace al maestro."},
- {en:"Never give up on your dreams.", es:"Nunca te rindas con tus sueños."},
- {en:"I can do this! I am capable.", es:"¡Puedo hacerlo! Soy capaz."},
- {en:"Learning is a journey, not a destination.", es:"Aprender es un viaje, no un destino."},
- {en:"Good morning! Have a wonderful day.", es:"¡Buenos días! Que tengas un día maravilloso."},
- {en:"Don't be afraid to make mistakes.", es:"No tengas miedo de cometer errores."},
- {en:"Every mistake is a lesson learned.", es:"Cada error es una lección aprendida."},
- {en:"I am getting better every single day.", es:"Estoy mejorando cada día más."},
- {en:"Consistency is the key to success.", es:"La constancia es la clave del éxito."},
- {en:"May I ask you a question?", es:"¿Puedo hacerte una pregunta?"},
- {en:"Could you speak a little slower please?", es:"¿Podrías hablar un poco más lento por favor?"},
- {en:"I am here to learn and improve.", es:"Estoy aquí para aprender y mejorar."},
- {en:"Knowledge is the greatest treasure.", es:"El conocimiento es el mayor tesoro."},
- {en:"Believe in yourself, you can do it.", es:"Cree en ti mismo, tú puedes hacerlo."},
- {en:"Let's practice together, shall we?", es:"Practiquemos juntos, ¿te parece?"},
- {en:"I don't know yet, but I will learn.", es:"Todavía no lo sé, pero lo aprenderé."},
- {en:"Your effort will pay off.", es:"Tu esfuerzo dará frutos."},
- {en:"Small progress is still progress.", es:"Un pequeño avance sigue siendo avance."},
- {en:"Today is a great day to learn something new.", es:"Hoy es un gran día para aprender algo nuevo."},
- {en:"Keep going, you are doing great.", es:"Sigue así, lo estás haciendo muy bien."},
- {en:"Language opens doors to the world.", es:"El idioma abre puertas al mundo."},
- {en:"Thank you for being so patient with me.", es:"Gracias por tener tanta paciencia conmigo."},
- {en:"I will never stop learning.", es:"Nunca dejaré de aprender."},
- {en:"The best time to start is now.", es:"El mejor momento para empezar es ahora."}
+ {en:"Hello! How are you today?",es:"¡Hola! ¿Cómo estás hoy?"},
+ {en:"I want to speak English fluently.",es:"Quiero hablar inglés con fluidez."},
+ {en:"Can you help me, please?",es:"¿Me puedes ayudar, por favor?"},
+ {en:"I understand everything perfectly.",es:"Entiendo todo perfectamente."},
+ {en:"Thank you very much for your support.",es:"Muchas gracias por tu apoyo."},
+
+ {en:"Practice makes perfect.",es:"La práctica hace al maestro."},
+ {en:"Never give up on your dreams.",es:"Nunca te rindas con tus sueños."},
+ {en:"I am capable of learning anything.",es:"Soy capaz de aprender cualquier cosa."},
+ {en:"Every day I improve a little more.",es:"Cada día mejoro un poco más."},
+ {en:"Learning is a journey, not a destination.",es:"Aprender es un viaje, no un destino."},
+
+ {en:"Good morning! Have a wonderful day.",es:"¡Buenos días! Que tengas un día maravilloso."},
+ {en:"Don't be afraid to make mistakes.",es:"No tengas miedo de cometer errores."},
+ {en:"Mistakes help me learn better.",es:"Los errores me ayudan a aprender mejor."},
+ {en:"I am here to learn and grow.",es:"Estoy aquí para aprender y crecer."},
+ {en:"Consistency is the key to success.",es:"La constancia es la clave del éxito."},
+
+ {en:"Could you speak a bit slower, please?",es:"¿Podrías hablar un poco más lento, por favor?"},
+ {en:"May I ask you something?",es:"¿Puedo preguntarte algo?"},
+ {en:"I don't understand this word.",es:"No entiendo esta palabra."},
+ {en:"How do you pronounce this?",es:"¿Cómo se pronuncia esto?"},
+ {en:"Can you repeat that please?",es:"¿Puedes repetirlo por favor?"},
+
+ {en:"Small steps are still progress.",es:"Pequeños pasos también son progreso."},
+ {en:"I will never stop learning.",es:"Nunca dejaré de aprender."},
+ {en:"The best time to start is now.",es:"El mejor momento para empezar es ahora."},
+ {en:"Believe in yourself — you can do it.",es:"Cree en ti mismo — tú puedes hacerlo."},
+ {en:"Knowledge is the greatest treasure.",es:"El conocimiento es el mayor tesoro."},
+
+ {en:"Let's practice together, shall we?",es:"Practiquemos juntos, ¿te parece?"},
+ {en:"Your effort will pay off.",es:"Tu esfuerzo dará frutos."},
+ {en:"I am getting better every single day.",es:"Estoy mejorando cada día más."},
+ {en:"Today is a great day to learn something new.",es:"Hoy es un gran día para aprender algo nuevo."},
+ {en:"Keep going — you are doing amazing!",es:"Sigue así — ¡lo estás haciendo increíble!"}
 ];
 
 const startDate = new Date('2026-09-15');
 const today = new Date();
 const daysDiff = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
-const dayIndex = daysDiff % phrases.length;
+const cycleDay = (daysDiff * 5) % phrases.length;
+const dayNumber = Math.floor(daysDiff / 1) + 1;
 
-document.getElementById('dayBadge').textContent = `Day ${dayIndex + 1}`;
-document.getElementById('phraseContainer').innerHTML = `
- <div class="en" translate="no">${phrases[dayIndex].en}</div>
- <div class="es">→ ${phrases[dayIndex].es}</div>
-`;
+document.getElementById('dayBadge').textContent = `Day ${dayNumber}`;
+
+let html = '';
+for(let i = 0; i < 5; i++) {
+  const p = phrases[(cycleDay + i) % phrases.length];
+  html += `
+    <div class="phrase">
+      <div class="en" translate="no">${p.en}</div>
+      <div class="es">→ ${p.es}</div>
+    </div>
+  `;
+}
+document.getElementById('phrasesList').innerHTML = html;
 </script>
 
 </body>
